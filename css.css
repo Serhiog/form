@@ -1,0 +1,13 @@
+fieldset {
+  width: 370px;
+  margin: 100px auto auto auto;
+}
+
+legend {
+  text-align: center;
+}
+
+button {
+  margin-left: 130px;
+  margin-top: 10px;
+}

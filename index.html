@@ -4,17 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="css.css" rel="stylesheet" />
     <title>Document</title>
   </head>
   <body>
-    <h1>Название</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
-      provident enim, quidem earum deserunt esse quo eligendi officiis nulla
-      doloremque dolorem quos soluta? Minima vero consequuntur dicta, modi
-      molestias fugiat!
-    </p>
-    <div></div>
-    <div></div>
+    <fieldset>
+      <legend>Форма регистрации пользователя</legend>
+      <form action="" onsubmit="return valid()">
+        <label>Ваше имя: <input id="name" type="text"/></label><br />
+        <label>Ваша фамилия: <input id="surname" type="text"/></label><br />
+        <label
+          >Ваше отчество:
+          <input id="otc" type="text" name="userotchestvo"/></label
+        ><br />
+        <label>Ваша дата рождения: <input type="date" name="userdate"/></label
+        ><br />
+        <label
+          >Укажите новый пароль: <input type="password" name="userdate"/></label
+        ><br />
+        <label
+          >Откуда узнали о нас:
+          <input type="radio" name="userdate" checked />
+          Интернет <input type="radio" name="userdate" /> ТВ
+          <input type="radio" name="userdate" /> Радио </label
+        ><br />
+        <hr />
+        <button type="submit">Регистрация !</button>
+      </form>
+    </fieldset>
+
+    <script src="script.js"></script>
   </body>
 </html>
