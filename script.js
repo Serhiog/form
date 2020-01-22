@@ -28,8 +28,11 @@ function valid() {
     otc.style.board = "2px solid green";
   }
 
-  if (pass2.value != pass1.value) {
-    alert("Введенные пароли не совпадают");
+  if (pass2.value != pass1.value || !pass2.value || !pass1.value) {
+    alert("Введенные пароли не совпадают или не указаны !");
+    return false;
+  } else {
+    window.location = "http:/ya.ru";
     return false;
   }
 
