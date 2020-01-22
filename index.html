@@ -10,7 +10,7 @@
   <body>
     <fieldset>
       <legend>Форма регистрации пользователя</legend>
-      <form action="" onsubmit="return valid()">
+      <form onsubmit="return valid()">
         <label>Ваше имя: <input id="name" type="text"/></label><br />
         <label>Ваша фамилия: <input id="surname" type="text"/></label><br />
         <label
@@ -20,14 +20,16 @@
         <label>Ваша дата рождения: <input type="date" name="userdate"/></label
         ><br />
         <label
-          >Укажите новый пароль: <input type="password" name="userdate"/></label
+          >Укажите новый пароль:
+          <input id="pass1" type="password" name="userdate"/></label
         ><br />
-        <label
-          >Откуда узнали о нас:
-          <input type="radio" name="userdate" checked />
-          Интернет <input type="radio" name="userdate" /> ТВ
-          <input type="radio" name="userdate" /> Радио </label
-        ><br />
+        <label>Повторите новый пароль:</label>
+        <input id="pass2" type="password" name="userdate2" />
+        <label>Откуда узнали о нас:</label>
+        <input type="radio" name="userdate" checked />
+        <label> Интернет</label> <input type="radio" name="userdate" />
+        <label>ТВ</label> <input type="radio" name="userdate" />
+        <label>Радио</label> <br />
         <hr />
         <button type="submit">Регистрация !</button>
       </form>
