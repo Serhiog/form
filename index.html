@@ -8,16 +8,18 @@
     <title>Document</title>
   </head>
   <body>
-    <fieldset>
+    <fieldset id="field">
       <legend>Форма регистрации пользователя</legend>
       <form onsubmit="return valid()">
         <label>Ваше имя: <input id="name" type="text"/></label><br />
         <label>Ваша фамилия: <input id="surname" type="text"/></label><br />
         <label
           >Ваше отчество:
-          <input id="otc" type="text" name="userotchestvo"/></label
+          <input id="oche" type="text" name="userotchestvo"/></label
         ><br />
-        <label>Ваша дата рождения: <input type="date" name="userdate"/></label
+        <label
+          >Ваша дата рождения:
+          <input id="date" type="date" name="userdate"/></label
         ><br />
         <label
           >Укажите новый пароль:
@@ -31,7 +33,7 @@
         <label>ТВ</label> <input type="radio" name="userdate" />
         <label>Радио</label> <br />
         <hr />
-        <button type="submit">Регистрация !</button>
+        <button id="button">Регистрация !</button>
       </form>
     </fieldset>
 

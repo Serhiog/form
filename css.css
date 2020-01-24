@@ -1,6 +1,8 @@
+
 fieldset {
   width: 370px;
   margin: 100px auto auto auto;
+  border-radius: 10px;
 }
 
 input {
@@ -13,4 +15,8 @@ legend {
 button {
   margin-left: 130px;
   margin-top: 10px;
+}
+input {
+  border-radius: 3px;
+  background: lightgrey;
 }
