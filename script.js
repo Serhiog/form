@@ -40,6 +40,10 @@ const checkInput = (evt) => {
     errorText.textContent = 'Пожалуйста, заполните данные текстом';
     errorImg.style.display = 'block';
   }
+  else if (isNaN(evt.data)) {
+    errorText.textContent = '';
+    errorImg.style.display = 'none';
+  }
 
   else if (valueLength < MIN_LENGTH || valueLength > MAX_LENGHT) {
     evt.target.style.border = '1px solid red';
@@ -76,6 +80,12 @@ const checkInputTel = (evt) => {
     errorImg.style.display = 'block';
   }
 
+
+  else if (!isNaN(evt.target.value)) {
+    errorText.textContent = '';
+    errorImg.style.display = 'none';
+  }
+
   else if (valueLength < MIN_LENGTH || valueLength > MAX_LENGHT) {
     evt.target.style.border = '1px solid red';
   }
@@ -88,13 +98,6 @@ const checkInputTel = (evt) => {
     errorImg.style.display = 'none';
   }
 }
-
-// const checkNaN = (evt) => {
-//   if (isNaN(evt.target.value)) {
-//     console.log('не число')
-//     evt.target.value = ''
-//   }
-// };
 
 name.addEventListener('invalid', checkInvalid);
 name.addEventListener('input', checkInput);
