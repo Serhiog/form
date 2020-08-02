@@ -31,6 +31,7 @@ const checkInvalid = (evt) => {
   }
 };
 
+
 const checkInput = (evt) => {
   const valueLength = evt.target.value.length;
 
