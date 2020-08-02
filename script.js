@@ -1,101 +1,110 @@
-//                                                       Вариант 1 -------------------->
 
-// function valid() {
-//   var name = document.getElementById("name");
-//   var surname = document.getElementById("surname");
-//   var pass1 = document.getElementById("pass1");
-//   var pass2 = document.getElementById("pass2");
+const MIN_LENGTH = 4;
+const MAX_LENGHT = 10;
 
-//   if (!name.value) {
-//     name.style.border = "2px solid red";
-//     alert("Имя не указано");
-//     return false;
-//   } else {
-//     name.style.border = "2px solid green";
-//   }
+const form = document.querySelector('.content__form');
+const name = form.querySelector('#name');
+const surName = form.querySelector('#surname');
+const tel = form.querySelector('#tel');
+const email = form.querySelector('#email');
+const login = form.querySelector('#login');
+const password = form.querySelector('#password');
+const rePassword = form.querySelector('#repassword');
+const errorText = document.querySelector('.content__error-info')
+const errorImg = document.querySelector('.content__error-img')
 
-//   if (!surname.value) {
-//     surname.style.border = "2px solid red";
-//     alert("Фамилия не указана");
-//     return false;
-//   } else {
-//     surname.style.border = "2px solid green";
-//   }
+const checkInvalid = (evt) => {
+  const valueLength = name.value.length;
 
-//   if (!otc.value) {
-//     otc.style.border = "2px solid red";
-//     alert("Отчество не указано");
-//     return false;
-//   } else {
-//     otc.style.board = "2px solid green";
-//   }
-
-//   if (pass2.value != pass1.value || !pass2.value || !pass1.value) {
-//     alert("Введенные пароли не совпадают или не указаны !");
-//     return false;
-//   } else {
-//     window.location = "http:/ya.ru";
-//   }
-
-//   return true;
-// }
-//                                                        Вариант 2 -------------------->
-// function valid() {
-//   var name = document.getElementById("name");
-//   var surname = document.getElementById("surname");
-//   var pass1 = document.getElementById("pass1");
-//   var pass2 = document.getElementById("pass2");
-//
-//   if (
-//     !name ||
-//     !name.value ||
-//     name.value === " " ||
-//     !surname ||
-//     !surname.value ||
-//     surname.value === " "
-//   ) {
-//     (name.style.border = "2px solid red") ||
-//       (surname.style.border = "2px solid red");
-//     alert("Вы не ввели данные");
-//     return false;
-//   } else {
-//     (name.style.border = "2px solid green") ||
-//       (surname.style.border = "2px solid green");
-//     return true;
-//   }
-// }
-//                                                         Часть добавляющая изминения на клик по кнопке-------------------------
-//
-
-function valid() {
-  var name = document.getElementById("name");
-  var surname = document.getElementById("surname");
-  var oche = document.getElementById("oche");
-  var date = document.getElementById("date");
-  var pass1 = document.getElementById("pass1");
-  var pass2 = document.getElementById("pass2");
-  var field = document.getElementById("field");
-
-  if (
-    (!name || !name.value || name.value === " ",
-    !surname || !surname.value || surname.value === " ",
-    !oche || !oche.value || oche.value === " ",
-    !date || !date.value || date.value === " ",
-    !pass1 || !pass1.value || pass1.value === " ",
-    !pass2 || !pass2.value || pass2.value === " ")
-  ) {
-    alert("Данные не введены") & (field.style.border = "5px solid red");
+  if (valueLength < MIN_LENGTH) {
+    evt.target.setCustomValidity('Пожалуйста, укажите Ваши данные полностью чтобы наш менеджер смог связаться с Вами')
+    errorText.textContent = 'Пожалуйста, укажите Ваши данные полностью чтобы наш менеджер смог связаться с Вами';
+    errorImg.style.display = 'block';
+  } else if (valueLength > MAX_LENGHT) {
+    evt.target.setCustomValidity('Пожалуйста, укажите Ваше имя корректно чтобы наш менеджер смог связаться с Вами')
+  } else if (valueLength.length === 0) {
+    evt.target.setCustomValidity('Пожалуйста, заполните это поле')
   } else {
-    alert("Данные введены ") & (field.style.border = "5px solid green");
+    evt.target.setCustomValidity('')
+    errorText.textContent = '';
+    errorImg.style.display = 'none';
   }
-  if (pass2.value !== pass1.value) {
-    alert("Введенные пароли не совпадают !");
+};
+
+const checkInput = (evt) => {
+  const valueLength = evt.target.value.length;
+
+  if (!isNaN(evt.data)) {
+    evt.target.value = ''
+    errorText.textContent = 'Пожалуйста, заполните данные текстом';
+    errorImg.style.display = 'block';
   }
-  return false;
+
+  else if (valueLength < MIN_LENGTH || valueLength > MAX_LENGHT) {
+    evt.target.style.border = '1px solid red';
+  }
+  else if (valueLength > MIN_LENGTH || valueLength < MAX_LENGHT) {
+    evt.target.style.border = '1px solid green';
+  }
+  else {
+    evt.target.setCustomValidity('');
+    errorText.textContent = '';
+    errorImg.style.display = 'none';
+  }
 }
 
-document.getElementById("button").onfocus = function changeContent() {
-  document.getElementById("button").innerHTML = "Успешно !";
-  document.getElementById("button").style =
-    "Color: black; font-weight: bold; background: lightblue";
-};
+const checkPassword = () => {
+  const userPass = password.value;
+  const userRePass = rePassword.value;
+  if (userPass === userRePass) {
+    password.style.border = '1px solid green';
+    rePassword.style.border = '1px solid green';
+  }
+  else {
+    password.style.border = '1px solid red';
+    rePassword.style.border = '1px solid red';
+  }
+}
+
+const checkInputTel = (evt) => {
+  const valueLength = evt.target.value.length;
+
+  if (isNaN(evt.target.value)) {
+    evt.target.value = ''
+    errorText.textContent = 'Пожалуйста, заполните номер телефона цифрами';
+    errorImg.style.display = 'block';
+  }
+
+  else if (valueLength < MIN_LENGTH || valueLength > MAX_LENGHT) {
+    evt.target.style.border = '1px solid red';
+  }
+  else if (valueLength > MIN_LENGTH || valueLength < MAX_LENGHT) {
+    evt.target.style.border = '1px solid green';
+  }
+  else {
+    evt.target.setCustomValidity('');
+    errorText.textContent = '';
+    errorImg.style.display = 'none';
+  }
+}
+
+// const checkNaN = (evt) => {
+//   if (isNaN(evt.target.value)) {
+//     console.log('не число')
+//     evt.target.value = ''
+//   }
+// };
+
+name.addEventListener('invalid', checkInvalid);
+name.addEventListener('input', checkInput);
+surName.addEventListener('invalid', checkInvalid);
+surName.addEventListener('input', checkInput);
+tel.addEventListener('invalid', checkInvalid);
+tel.addEventListener('input', checkInputTel);
+email.addEventListener('invalid', checkInvalid);
+email.addEventListener('input', checkInput);
+login.addEventListener('invalid', checkInvalid);
+login.addEventListener('input', checkInput);
+
+password.addEventListener('input', checkPassword);
+rePassword.addEventListener('input', checkPassword);
