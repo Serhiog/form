@@ -43,14 +43,15 @@ const checkInput = (evt) => {
   else if (isNaN(evt.data)) {
     errorText.textContent = '';
     errorImg.style.display = 'none';
+    if (valueLength < MIN_LENGTH || valueLength > MAX_LENGHT) {
+      evt.target.style.border = '1px solid red';
+    }
+    else if (valueLength > MIN_LENGTH || valueLength < MAX_LENGHT) {
+      evt.target.style.border = '1px solid green';
+    }
   }
 
-  else if (valueLength < MIN_LENGTH || valueLength > MAX_LENGHT) {
-    evt.target.style.border = '1px solid red';
-  }
-  else if (valueLength > MIN_LENGTH || valueLength < MAX_LENGHT) {
-    evt.target.style.border = '1px solid green';
-  }
+
   else {
     evt.target.setCustomValidity('');
     errorText.textContent = '';
@@ -84,14 +85,15 @@ const checkInputTel = (evt) => {
   else if (!isNaN(evt.target.value)) {
     errorText.textContent = '';
     errorImg.style.display = 'none';
+    if (valueLength < MIN_LENGTH || valueLength > MAX_LENGHT) {
+      evt.target.style.border = '1px solid red';
+    }
+    else if (valueLength > MIN_LENGTH || valueLength < MAX_LENGHT) {
+      evt.target.style.border = '1px solid green';
+    }
   }
 
-  else if (valueLength < MIN_LENGTH || valueLength > MAX_LENGHT) {
-    evt.target.style.border = '1px solid red';
-  }
-  else if (valueLength > MIN_LENGTH || valueLength < MAX_LENGHT) {
-    evt.target.style.border = '1px solid green';
-  }
+
   else {
     evt.target.setCustomValidity('');
     errorText.textContent = '';
